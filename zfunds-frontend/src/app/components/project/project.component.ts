@@ -210,6 +210,7 @@ export class ProjectComponent implements OnInit {
   cancelInvestment() {
     this.resetInvestmentForm();
   }
+  
 
   private resetInvestmentForm() {
     this.showInvestmentForm = false;

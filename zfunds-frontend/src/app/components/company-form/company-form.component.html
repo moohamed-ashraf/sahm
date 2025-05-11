@@ -1,17 +1,54 @@
 <div class="header-section">
     <h2>Add New Company</h2>
     <button (click)="navigateBack()" class="btn btn-back">
-        Back to Company List
+      Back to Company List
     </button>
-</div>
-
-<form (ngSubmit)="submitForm()" #companyForm="ngForm">
-    <input type="text" placeholder="Company Name" [(ngModel)]="companyData.company_name" name="company_name" required>
-    <input type="text" placeholder="Tax Number" [(ngModel)]="companyData.tax_number" name="tax_number" required>
-    <input type="text" placeholder="Commercial Register" [(ngModel)]="companyData.commercial_register"
-        name="commercial_register" required>
-    <input type="text" placeholder="Industry" [(ngModel)]="companyData.industry" name="industry">
-    <!-- <input type="number" placeholder="User ID" [(ngModel)]="companyData.user_id" name="user_id"> -->
-    <!-- <input type="number" placeholder="Plan ID" [(ngModel)]="companyData.plan_id" name="plan_id"> -->
-    <button type="submit">Add Company</button>
-</form>
+  </div>
+  
+  <form (ngSubmit)="submitForm()" #companyForm="ngForm" class="add-project-form">
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Company Name"
+        [(ngModel)]="companyData.company_name"
+        name="company_name"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Tax Number"
+        [(ngModel)]="companyData.tax_number"
+        name="tax_number"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Commercial Register"
+        [(ngModel)]="companyData.commercial_register"
+        name="commercial_register"
+        required
+      />
+    </div>
+  
+    <div class="form-group">
+      <input
+        type="text"
+        placeholder="Industry"
+        [(ngModel)]="companyData.industry"
+        name="industry"
+      />
+    </div>
+  
+    <div class="form-actions">
+      <button type="submit" class="submit-button">
+        Add Company
+      </button>
+    </div>
+  </form>
+  

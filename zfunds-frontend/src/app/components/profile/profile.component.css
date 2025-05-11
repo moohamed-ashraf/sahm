@@ -1,497 +1,337 @@
-/* Profile Container */
-:host {
-  display: block;
-  max-width: 800px;
-  margin: 2rem auto;
-  padding: 0 1rem;
-}
-
-/* Form Styles */
-form {
-  background: white;
-  padding: 2rem;
-  border-radius: 10px;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-/* Form Groups */
-.form-group {
-  margin-bottom: 1.5rem;
-}
-
-/* Labels */
-label {
-  display: block;
-  margin-bottom: 0.5rem;
-  color: #333;
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-/* Input Fields */
-input, select {
-  width: 100%;
-  padding: 0.75rem;
-  border: 1px solid #ddd;
-  border-radius: 5px;
-  font-size: 1rem;
-  transition: border-color 0.3s ease;
-}
-
-input:focus, select:focus {
-  outline: none;
-  border-color: #4a90e2;
-  box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.2);
-}
-
-/* Error Messages */
-.error-message {
-  color: #dc3545;
-  font-size: 0.8rem;
-  margin-top: 0.25rem;
-}
-
-/* Buttons */
-button {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 5px;
-  font-size: 1rem;
-  font-weight: 500;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-button[type="submit"] {
-  background-color: #4a90e2;
-  color: white;
-  margin-right: 1rem;
-}
-
-button[type="submit"]:hover {
-  background-color: #357abd;
-}
-
-button[type="button"] {
-  background-color: #dc3545;
-  color: white;
-}
-
-button[type="button"]:hover {
-  background-color: #c82333;
-}
-
-button:disabled {
-  background-color: #ccc;
-  cursor: not-allowed;
-}
-
-/* Loading State */
-.loading {
-  opacity: 0.7;
-  pointer-events: none;
-}
-
-/* Success Message */
-.success-message {
-  background-color: #d4edda;
-  color: #155724;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-}
-
-/* Error Message */
-.error-message {
-  background-color: #f8d7da;
-  color: #721c24;
-  padding: 1rem;
-  border-radius: 5px;
-  margin-bottom: 1rem;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  form {
-    padding: 1.5rem;
+:root {
+    --primary: #4a90e2;
+    --primary-dark: #357abd;
+    --text-dark: #1f2937;
+    --text-muted: #6c757d;
+    --gray-light: #f8f9fa;
+    --radius: 8px;
   }
-
-  button {
+  
+  :host {
+    display: block;
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 0 1rem;
+  }
+  
+  form {
+    background: white;
+    padding: 2rem;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    animation: fadeIn 0.3s ease-out;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #333;
+    font-weight: 500;
+    font-size: 0.9rem;
+  }
+  
+  input, select {
     width: 100%;
+    padding: 0.75rem;
+    border: 1px solid #ddd;
+    border-radius: 6px;
+    font-size: 1rem;
+    transition: border-color 0.3s, box-shadow 0.3s;
+  }
+  
+  input:focus, select:focus {
+    outline: none;
+    border-color: var(--primary);
+    box-shadow: 0 0 0 2px rgba(74, 144, 226, 0.25);
+  }
+  
+  button,
+  button[type="submit"],
+  button[type="button"],
+  .browse-projects-btn,
+  .button-group button {
+    background-color: var( --primary-color);
+    /* background-color: #4a90e2; */
+    color: white;
+    border: none;
+    padding: 0.75rem 1.5rem;
+    border-radius: 8px;
+    font-weight: 500;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  button:hover,
+  .browse-projects-btn:hover,
+  .button-group button:hover {
+    background-color: var(--primary-hover);
+    box-shadow: 0 4px 12px rgba(37, 99, 235, 0.3);
+  }
+  
+  button:disabled,
+  .button-group button:disabled {
+    background-color: #a1b5d8;
+    cursor: not-allowed;
+  }
+  
+  .success-message,
+  .error-message {
+    padding: 1rem;
+    border-radius: 6px;
     margin-bottom: 1rem;
   }
-
-  button[type="submit"] {
-    margin-right: 0;
+  
+  .success-message {
+    background-color: #e0f7fa;
+    color: #007bff;
+    border-left: 4px solid var(--primary);
   }
-}
-
-/* Animation */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(-10px);
+  
+  .error-message {
+    background-color: #fdecea;
+    color: #d9534f;
+    border-left: 4px solid #d9534f;
   }
-  to {
-    opacity: 1;
-    transform: translateY(0);
+  
+  .form-group {
+    margin-bottom: 1.5rem;
   }
-}
-
-form {
-  animation: fadeIn 0.3s ease-out;
-}
-
-.profile-container {
+  
+  .button-group {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+  }
+  
+  .profile-container {
     max-width: 800px;
     margin: 0 auto;
     padding: 20px;
-}
-
-.entrepreneur-section {
+  }
+  
+  .entrepreneur-section {
     margin-top: 40px;
     padding: 20px;
-    background-color: #f8f9fa;
-    border-radius: 8px;
-}
-
-.companies-list {
+    background-color: var(--gray-light);
+    border-radius: var(--radius);
+  }
+  
+  .companies-list,
+  .projects-list {
     margin-top: 20px;
-}
-
-.company-card {
+  }
+  
+  .company-card,
+  .project-card {
     background-color: white;
     padding: 20px;
-    margin-bottom: 20px;
     border-radius: 8px;
     box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-}
-
-.company-card h4 {
-    color: #2c3e50;
-    margin-bottom: 15px;
-}
-
-.projects-list {
-    margin-top: 20px;
-    padding-left: 20px;
-}
-
-.project-card {
-    background-color: #f8f9fa;
-    padding: 15px;
-    margin-bottom: 15px;
-    border-radius: 6px;
-    border-left: 4px solid #007bff;
-}
-
-.project-card h6 {
-    color: #2c3e50;
+    margin-bottom: 20px;
+  }
+  
+  .project-card {
+    border-left: 4px solid var(--primary);
+  }
+  
+  .project-card h6,
+  .company-card h4,
+  .investment-header h4 {
+    color: var(--text-dark);
     margin-bottom: 10px;
-}
-
-.project-stats {
+  }
+  
+  .project-stats,
+  .investment-details {
     margin-top: 10px;
-}
-
-.progress-bar {
-    background-color: #e9ecef;
-    height: 20px;
+  }
+  
+  .progress-container,
+  .progress-bar {
+    background: #ecf0f1;
     border-radius: 10px;
-    margin-top: 10px;
     overflow: hidden;
-}
-
-.progress {
-    background-color: #007bff;
+    height: 8px;
+    margin-top: 10px;
+  }
+  
+  .progress {
+    background: linear-gradient(90deg, var(--primary), #2ecc71);
     height: 100%;
-    transition: width 0.3s ease;
+    transition: width 1s ease-in-out;
     display: flex;
     align-items: center;
     justify-content: center;
     color: white;
     font-size: 12px;
-}
-
-.no-companies, .no-projects {
-    text-align: center;
-    padding: 20px;
-    color: #6c757d;
-    font-style: italic;
-}
-
-/* Existing styles */
-.form-group {
-    margin-bottom: 20px;
-}
-
-.form-group label {
-    display: block;
-    margin-bottom: 5px;
+  }
+  
+  .status-badge {
+    padding: 0.4rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.9rem;
     font-weight: 500;
-}
-
-.form-group input {
-    width: 100%;
-    padding: 8px;
-    border: 1px solid #ddd;
-    border-radius: 4px;
-}
-
-.error-input {
-    border-color: #dc3545 !important;
-}
-
-.error-message {
-    color: #dc3545;
-    font-size: 0.875rem;
-    margin-top: 5px;
-}
-
-.button-group {
-    display: flex;
-    gap: 10px;
-    margin-top: 20px;
-}
-
-.button-group button {
-    padding: 8px 16px;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.button-group button[type="submit"] {
-    background-color: #007bff;
-    color: white;
-}
-
-.button-group button[type="button"] {
-    background-color: #dc3545;
-    color: white;
-}
-
-.button-group button:disabled {
-    opacity: 0.7;
-    cursor: not-allowed;
-}
-
-.success-message {
-    background-color: #d4edda;
-    color: #155724;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
-
-.error-message {
-    background-color: #f8d7da;
-    color: #721c24;
-    padding: 10px;
-    border-radius: 4px;
-    margin-bottom: 20px;
-}
-
-/* Investor Section Styles */
-.investor-section {
+    text-transform: capitalize;
+  }
+  
+  .status-badge.active {
+    background: #e1f0fe;
+    color: var(--primary-dark);
+  }
+  
+  .status-badge.completed {
+    background: #e6f9ec;
+    color: #2e7d32;
+  }
+  
+  .status-badge.draft {
+    background: #f4f5f7;
+    color: #6c757d;
+  }
+  
+  .investor-section {
     margin-top: 2rem;
     padding: 1rem;
-    background: #fff;
-    border-radius: 8px;
+    background: white;
+    border-radius: var(--radius);
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-}
-
-.investments-list {
+  }
+  
+  .investments-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
     gap: 1.5rem;
     margin-top: 1.5rem;
-}
-
-.investment-card {
-    background: #fff;
+  }
+  
+  .investment-card {
+    background: white;
     border-radius: 8px;
     padding: 1.5rem;
     box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
     animation: fadeIn 0.5s ease-out;
-}
-
-.investment-card:hover {
+  }
+  
+  .investment-card:hover {
     transform: translateY(-5px);
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
-}
-
-.investment-header {
+  }
+  
+  .investment-header {
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
     margin-bottom: 1rem;
-}
-
-.investment-header h4 {
-    margin: 0;
-    color: #2c3e50;
-    font-size: 1.2rem;
-}
-
-.investment-date {
+  }
+  
+  .investment-date {
     color: #7f8c8d;
     font-size: 0.9rem;
-}
-
-.investment-details {
-    margin: 1rem 0;
-}
-
-.detail-item {
+  }
+  
+  .detail-item {
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.5rem;
     padding: 0.5rem 0;
     border-bottom: 1px solid #ecf0f1;
-}
-
-.detail-item:last-child {
+  }
+  
+  .detail-item:last-child {
     border-bottom: none;
-}
-
-.label {
+  }
+  
+  .label {
     color: #7f8c8d;
     font-weight: 500;
-}
-
-.value {
+  }
+  
+  .value {
     color: #2c3e50;
     font-weight: 600;
-}
-
-.progress-container {
-    margin: 1rem 0;
-}
-
-.progress-bar {
-    background: #ecf0f1;
-    border-radius: 10px;
-    height: 8px;
-    overflow: hidden;
-}
-
-.progress {
-    background: linear-gradient(90deg, #3498db, #2ecc71);
-    height: 100%;
-    border-radius: 10px;
-    transition: width 1s ease-in-out;
-}
-
-.investment-status {
-    margin-top: 1rem;
-    text-align: right;
-}
-
-.status-badge {
-    padding: 0.4rem 0.8rem;
-    border-radius: 20px;
-    font-size: 0.9rem;
-    font-weight: 500;
-}
-
-.status-badge.active {
-    background: #e1f5fe;
-    color: #0288d1;
-}
-
-.status-badge.completed {
-    background: #e8f5e9;
-    color: #2e7d32;
-}
-
-.status-badge.draft {
-    background: #f5f5f5;
-    color: #616161;
-}
-
-/* Loading State */
-.loading-container {
+  }
+  
+  .loading-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     padding: 2rem;
-}
-
-.loading-spinner {
+  }
+  
+  .loading-spinner {
     width: 40px;
     height: 40px;
     border: 4px solid #f3f3f3;
-    border-top: 4px solid #3498db;
+    border-top: 4px solid var(--primary);
     border-radius: 50%;
     animation: spin 1s linear infinite;
     margin-bottom: 1rem;
-}
-
-/* Empty State */
-.no-investments {
+  }
+  
+  .no-companies,
+  .no-projects,
+  .no-investments {
     text-align: center;
-    padding: 3rem 1rem;
-}
-
-.empty-state {
+    padding: 2rem;
+    color: var(--text-muted);
+    font-style: italic;
+  }
+  
+  .empty-state {
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 1rem;
-}
-
-.empty-state i {
+  }
+  
+  .empty-state i {
     font-size: 3rem;
     color: #bdc3c7;
-}
-
-.browse-projects-btn {
-    background: #3498db;
-    color: white;
-    border: none;
-    padding: 0.8rem 1.5rem;
-    border-radius: 25px;
-    font-weight: 500;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.browse-projects-btn:hover {
-    background: #2980b9;
-}
-
-/* Animations */
-@keyframes fadeIn {
+  }
+  
+  @keyframes fadeIn {
     from {
-        opacity: 0;
-        transform: translateY(20px);
+      opacity: 0;
+      transform: translateY(20px);
     }
     to {
-        opacity: 1;
-        transform: translateY(0);
+      opacity: 1;
+      transform: translateY(0);
     }
-}
-
-@keyframes spin {
+  }
+  
+  @keyframes spin {
     0% { transform: rotate(0deg); }
     100% { transform: rotate(360deg); }
-}
-
-@keyframes progressAnimation {
-    from { width: 0; }
-    to { width: var(--progress-width); }
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
+  }
+  
+  @media (max-width: 768px) {
+    form {
+      padding: 1.5rem;
+    }
+  
+    .button-group {
+      flex-direction: column;
+    }
+  
     .investments-list {
-        grid-template-columns: 1fr;
+      grid-template-columns: 1fr;
     }
-
+  
     .investment-card {
-        margin: 0 1rem;
+      margin: 0 1rem;
     }
-}
+  
+    button,
+    .browse-projects-btn {
+      width: 100%;
+      margin-bottom: 1rem;
+    }
+  
+    button[type="submit"] {
+      margin-right: 0;
+    }
+  }
