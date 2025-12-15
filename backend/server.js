@@ -46,7 +46,7 @@ app.use("/api/test", require("./routes/testRoutes"));
 
 // Health Check route
 app.get("/api/health", (req, res) => {
-  res.status(200).json({ status: "ok", message: "ZFunds API is running" });
+  res.status(200).json({ status: "ok", message: "Sahm API is running" });
 });
 
 // Error Handler
