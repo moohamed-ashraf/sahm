@@ -1,45 +1,46 @@
 <nav class="navbar">
-    <!-- Branding -->
-    <div class="navbar-brand">
-      <p class="navbar-brand-text">Zfunds</p>
-    </div>
-  
-    <!-- Navigation Links -->
-    <ul class="navbar-nav">
-  
-      <!-- Auth: Not Logged In -->
-      <ng-container *ngIf="!isLoggedIn">
-        <li><a routerLink="/login">Login</a></li>
-        <li><a routerLink="/register">Register</a></li>
-      </ng-container>
-  
-      <!-- Admin -->
-      <ng-container *ngIf="isLoggedIn && userRole === 'admin'">
-        <li><a routerLink="/dashboard">Dashboard</a></li>
-        <li><a routerLink="/plans">Plans</a></li>
-        <li><a routerLink="/companies">Companies</a></li>
-        <li><a routerLink="/projects">Projects</a></li>
-        <li><a routerLink="/profile">Profile</a></li>
-      </ng-container>
-  
-      <!-- Entrepreneur -->
-      <ng-container *ngIf="isLoggedIn && userRole === 'entrepreneur'">
-        <li><a routerLink="/plans">Plans</a></li>
-        <li><a routerLink="/companies">Companies</a></li>
-        <li><a routerLink="/profile">Profile</a></li>
-      </ng-container>
-  
-      <!-- Investor -->
-      <ng-container *ngIf="isLoggedIn && userRole === 'investor'">
-        <li><a routerLink="/projects">Projects</a></li>
-        <li><a routerLink="/profile">Profile</a></li>
-      </ng-container>
-  
-      <!-- Logout -->
-      <li *ngIf="isLoggedIn">
-        <button (click)="logout()">Logout</button>
-      </li>
-      
-    </ul>
-  </nav>
-  
+  <!-- Branding -->
+  <div class="navbar-brand">
+    <p class="navbar-brand-text">Sahm</p>
+  </div>
+
+  <!-- Navigation Links -->
+  <ul class="navbar-nav">
+    <!-- Auth: Not Logged In -->
+    <ng-container *ngIf="!isLoggedIn">
+      <li><a routerLink="/login">Login</a></li>
+      <li><a routerLink="/register">Register</a></li>
+    </ng-container>
+
+    <!-- Admin -->
+    <ng-container *ngIf="isLoggedIn && userRole === 'admin'">
+      <li><a routerLink="/dashboard">Dashboard</a></li>
+      <li><a routerLink="/companies">Companies</a></li>
+      <li><a routerLink="/add-company">Create Company</a></li>
+      <li><a routerLink="/projects">Projects</a></li>
+      <li><a routerLink="/plans">Manage Plans</a></li>
+      <li><a routerLink="/profile">Profile</a></li>
+    </ng-container>
+
+    <!-- Entrepreneur -->
+    <ng-container *ngIf="isLoggedIn && userRole === 'entrepreneur'">
+      <li><a routerLink="/companies">My Companies</a></li>
+      <li><a routerLink="/add-company">Create Company</a></li>
+      <li><a routerLink="/projects">Projects</a></li>
+      <li><a routerLink="/plans">Plans</a></li>
+      <li><a routerLink="/profile">Profile</a></li>
+    </ng-container>
+
+    <!-- Investor -->
+    <ng-container *ngIf="isLoggedIn && userRole === 'investor'">
+      <li><a routerLink="/projects">Browse Projects</a></li>
+      <li><a routerLink="/investments">My Investments</a></li>
+      <li><a routerLink="/profile">Profile</a></li>
+    </ng-container>
+
+    <!-- Logout -->
+    <li *ngIf="isLoggedIn">
+      <button (click)="logout()">Logout</button>
+    </li>
+  </ul>
+</nav>

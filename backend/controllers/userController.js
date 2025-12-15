@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const { validationResult } = require('express-validator');
 const db = require('../config/db');
 const generateToken = require('../utils/generateToken');
+const verifyCaptcha = require('../utils/verifyCaptcha');
 
 /**
  * @desc    Register a new user
@@ -14,7 +15,13 @@ const registerUser = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { user_name, user_email, user_role, password } = req.body;
+  const { user_name, user_email, user_role, password, captchaToken } = req.body;
+
+  // Verify reCAPTCHA
+  const isCaptchaValid = await verifyCaptcha(captchaToken);
+  if (!isCaptchaValid) {
+    return res.status(400).json({ message: 'reCAPTCHA verification failed. Please try again.' });
+  }
 
   try {
     // Check if user already exists
@@ -78,7 +85,13 @@ const loginUser = async (req, res) => {
     return res.status(400).json({ errors: errors.array() });
   }
 
-  const { user_email, password } = req.body;
+  const { user_email, password, captchaToken } = req.body;
+
+  // Verify reCAPTCHA
+  const isCaptchaValid = await verifyCaptcha(captchaToken);
+  if (!isCaptchaValid) {
+    return res.status(400).json({ message: 'reCAPTCHA verification failed. Please try again.' });
+  }
 
   try {
     // Find user by email

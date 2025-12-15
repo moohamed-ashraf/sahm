@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
 export class AuthService {
   private apiUrl = environment.apiUrl;
   getToken(): string {
-    return localStorage.getItem('token') || ''; // Get the token from local storage
+    return localStorage.getItem('userToken') || ''; // Get the token from local storage
   }
   private isLoggedInSubject = new BehaviorSubject<boolean>(this.hasToken());
   isLoggedIn$ = this.isLoggedInSubject.asObservable();
@@ -54,19 +54,21 @@ export class AuthService {
 
   constructor(private http: HttpClient) {}
 
-  login(user_email: string, password: string): Observable<any> {
+  login(user_email: string, password: string, captchaToken: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/users/login`, {
       user_email,
-      password
+      password,
+      captchaToken
     });
   }
 
-  register(user_name: string, user_email: string, password: string, user_role: string): Observable<any> {
+  register(user_name: string, user_email: string, password: string, user_role: string, captchaToken: string): Observable<any> {
     return this.http.post(`${this.apiUrl}/users/`, {
       user_name,
       user_email,
       password,
-      user_role
+      user_role,
+      captchaToken
     });
   }
 }

@@ -1,0 +1,12 @@
+{
+  "buildCommand": "cd zfunds-frontend && npm run build",
+  "outputDirectory": "zfunds-frontend/dist/zfunds-frontend/browser",
+  "framework": "angular",
+  "rewrites": [
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
+    }
+  ]
+}
+

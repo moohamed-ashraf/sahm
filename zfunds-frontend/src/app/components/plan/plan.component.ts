@@ -3,7 +3,7 @@ import { PlanService } from '../../services/plan.service';
 import { CompanyService } from '../../services/company.service';
 import { ActivatedRoute, Router, RouterModule } from '@angular/router';
 import { FormsModule } from '@angular/forms';
- import { CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { jwtDecode } from 'jwt-decode';
 
 @Component({

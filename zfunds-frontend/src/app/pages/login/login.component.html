@@ -27,12 +27,18 @@
           placeholder="••••••••"
         />
       </div>
+
+      <!-- reCAPTCHA -->
+      <div class="form-group">
+        <div #captchaContainer id="captcha-container"></div>
+        <div *ngIf="captchaError" class="error-message">{{ captchaError }}</div>
+      </div>
   
       <button type="submit" class="btn-login">Login</button>
     </form>
   
     <p class="register-link">
-      Don’t have an account?
+      Don't have an account?
       <a routerLink="/register">Register here</a>
     </p>
   </div>
